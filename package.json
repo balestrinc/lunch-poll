@@ -9,7 +9,6 @@
     "test-integration": "mocha --opts test/integration/mocha.opts test/integration/*.js",
     "test-unit": "mocha --opts test/unit/mocha.opts test/unit/**/*.js",
     "lint": "eslint . --quiet --ignore-path .gitignore",
-    "lint:fix": "eslint . --quiet --ignore-path .gitignore --fix",
     "test-front": "karma start ./test/karma.config.js",
     "gulp": "gulp"
   },

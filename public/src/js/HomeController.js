@@ -23,8 +23,9 @@ angular
               $scope.userAlreadyVoted = haveUserAlreadyVoted();
               $rootScope.allRestaurants = response[0].data;
               $rootScope.weekRestaurants = response[1].data;
-              $rootScope.eligibleRestaurants = _.filter($scope.allRestaurants, obj => !_.findWhere($scope.weekRestaurants, obj));
-
+              $rootScope.eligibleRestaurants = _.filter($scope.allRestaurants, function(obj){
+                  return !_.findWhere($scope.weekRestaurants, obj)
+              });
               redirect();
             }
         );
