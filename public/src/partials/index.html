@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                  </span>Previous Lunches
+              </h3>
+          </div>
+          <div class="panel-body">
+               <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="restaurant in weekRestaurants">
+                       {{restaurant.name}}
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+    <div ui-view></div>
+</div>

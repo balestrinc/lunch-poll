@@ -1,0 +1,23 @@
+
+<div class="col-md-4">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                </span>Lunch Poll for team {{user.team}}
+            </h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+            {{restaurantsVotes}}
+                <li class="list-group-item" ng-repeat="restaurant in lunchstatuscontroller.restaurantsVotes | orderBy:'-votes'">
+                    {{restaurant.name}}
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{restaurant.rate}}"
+                        aria-valuemin="0" aria-valuemax="100" style="width:{{restaurant.rate}}%">
+                      </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

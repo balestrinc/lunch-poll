@@ -1,0 +1,25 @@
+<div class="col-md-4">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                </span>Where would you like to go lunch today? 
+            </h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="restaurant in eligibleRestaurants">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" ng-model="vote.restaurantId"
+                            value="{{restaurant.id}}">
+                            {{restaurant.name}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <button type="button" ng-click="saveVote(vote)" class="btn btn-primary btn-sm">Vote</button>
+    </div>
+    </div>
+</div>

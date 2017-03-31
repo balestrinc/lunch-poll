@@ -1,2 +1,9 @@
 # Dependency directories
 node_modules
+public/vendor
+
+# Logs
+npm-debug.log*
+
+# build
+build

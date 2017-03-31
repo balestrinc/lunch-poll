@@ -8,7 +8,7 @@ describe('Routes Restaurants', () => {
       request
         .get('/restaurants')
         .end((err, res) => {
-          expect(res.body).to.have.length(5);
+          expect(res.body).to.have.length(8);
           expect(res.body[0].id).to.be.eql(defaultRestaurant.id);
           expect(res.body[0].name).to.be.eql(defaultRestaurant.name);
 
