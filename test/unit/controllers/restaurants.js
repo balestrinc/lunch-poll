@@ -14,7 +14,7 @@ describe('Controllers: Restaurants', () => {
       ];
 
       const restauratsController = new RestaurantsController();
-      const result = restauratsController.getNotEligibleRestaurants();
+      const result = restauratsController.getNotEligibleRestaurants('Test');
       expect(result).to.be.eql(expectedList);
 
       done();
@@ -28,7 +28,7 @@ describe('Controllers: Restaurants', () => {
       const expectedList = [];
 
       const restauratsController = new RestaurantsController();
-      const result = restauratsController.getNotEligibleRestaurants();
+      const result = restauratsController.getNotEligibleRestaurants('Test');
       expect(result).to.be.eql(expectedList);
 
       done();
