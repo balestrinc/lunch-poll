@@ -24,6 +24,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
          controllerAs: 'lunchstatuscontroller',
        });
 })
-.run(function($rootScope, $location) {
+.run(function($rootScope, $location, $state) {
   $rootScope.user = { email: 'matheus@test.com', name: 'Matheus', team: 'Node' };
+  $rootScope.$watch('userAlreadyVoted', function(newValue, oldValue) {
+      if (newValue === false && $state.current.name == 'home') {
+        $state.transitionTo('home.lunch-poll-status');
+      };
+    });
 });

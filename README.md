@@ -2,10 +2,10 @@
 
 A small application that aims to help in choosing the place where a team would like to have lunch.
 
-## What do you need to run the application?
+## Prerequisite to run the application
 
 
-Install Node.js 
+Install Node.js
 
 ```
 https://nodejs.org/
@@ -27,7 +27,7 @@ npm install
 bower install
 ```
 
-To run the application type the command:
+## To run the application
 
 ```
 npm start
@@ -35,3 +35,9 @@ npm start
 
 After that, open the address:
 Http://localhost:7000
+
+## To run the tests
+
+```
+npm run test
+```

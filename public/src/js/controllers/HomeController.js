@@ -41,12 +41,10 @@ angular
       }
 
       function haveUserAlreadyVoted() {
-        return false;
         return $rootScope.userVote ? true : false;
       }
 
       function isPollOpen() {
-        return true;
         var currentDate = new Date();
         var noon = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 12, 00, 0, 0);
         return currentDate < noon;
