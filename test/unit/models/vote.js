@@ -1,12 +1,17 @@
 import Vote from '../../../app/models/vote';
 
-const mockModel = td.function()
-mockModel.isPollOpen = td.function();
-mockModel.pollEndTime = td.function();
+const mockPoll = td.function()
+mockPoll.isPollOpen = td.function();
+mockPoll.pollEndTime = td.function();
+
+const mockRestaurant = td.function()
+mockRestaurant.getAlreadyVisitedRestaurants = td.function();
+
 
 describe('Models: Vote', () => {
   const voteModel = new Vote();
-  voteModel.voteValidation.poll = mockModel;
+  voteModel.voteValidation.poll = mockPoll;
+  voteModel.voteValidation.restaurantModel = mockRestaurant;
 
   afterEach(done => {
     td.reset();
@@ -47,9 +52,13 @@ describe('Models: Vote', () => {
 
   describe('Save a vote: save', () => {
     const newVote = { restaurantId: 7, team: 'ABC', user: 'lucas@test.com' };
+    const restaurants = [
+      { id: 9, name: 'Natural Green' },
+    ];
 
     beforeEach(done => {
       td.when(voteModel.voteValidation.poll.isPollOpen()).thenReturn(true);
+      td.when(mockRestaurant.getAlreadyVisitedRestaurants('ABC')).thenReturn(restaurants);
       done();
     });
 
@@ -74,13 +83,22 @@ describe('Models: Vote', () => {
 
     it('should throw an error when the user already voted', (done) => {
       voteModel.votes.push(newVote);
-      expect(voteModel.save.bind(voteModel, newVote)).to.throw('User aleady voted.');
+      expect(voteModel.save.bind(voteModel, newVote)).to.throw('User already voted.');
       done();
     });
 
     it('should throw an error when the poll is already closed', (done) => {
       td.when(voteModel.voteValidation.poll.isPollOpen()).thenReturn(false);
       expect(voteModel.save.bind(voteModel, newVote)).to.throw('The poll was closed at 12:00a.m.');
+      done();
+    });
+
+    it('should throw an error when the restaurant was already visited on the week', (done) => {
+      const weekRestaurants = [
+        { id: 7, name: 'Natural Green' },
+      ];
+      td.when(mockRestaurant.getAlreadyVisitedRestaurants('ABC')).thenReturn(weekRestaurants);
+      expect(voteModel.save.bind(voteModel, newVote)).to.throw('This restaurant was already visited this week.');
       done();
     });
   });
