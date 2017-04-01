@@ -46,7 +46,7 @@ angular
 
       function isPollOpen() {
         var currentDate = new Date();
-        var noon = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 12, 0, 0, 0);
+        var noon = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 12, 00, 0, 0);
         return currentDate < noon;
       }
 

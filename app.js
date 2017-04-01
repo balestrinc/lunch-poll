@@ -25,7 +25,7 @@ app.route('/restaurants')
 app.route('/restaurants/team/:teamId')
   .get((req, res) => {
     res.json(
-      restauratsController.getAlreadyVisitedRestaurants(req.params)
+      restauratsController.getAlreadyVisitedRestaurants(req.params.teamId)
     );
   });
 
@@ -39,7 +39,7 @@ app.route('/votes')
 app.route('/votes/team/:teamId/day')
   .get((req, res) => {
     res.json(
-      votesController.getTeamVotesOnCurrentDay(req.params),
+      votesController.getTeamVotesOnCurrentDay(req.params.teamId),
     );
   });
 

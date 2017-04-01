@@ -13,14 +13,14 @@ angular
           .save($scope.vote)
           .error(error)
           .success(updateDayVotes);
-        $state.transitionTo('home.lunch-poll-status');
       };
 
       function updateDayVotes(vote){
         $scope.$emit('updateDayVotes');
+        $state.transitionTo('home.lunch-poll-status');
       }
 
       function error(erro) {
-        console.log(erro);
+        alert(erro);
       }
     });

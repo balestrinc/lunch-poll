@@ -1,24 +1,16 @@
+import Vote from '../models/vote';
+
 class VotesController {
   constructor() {
-    this.votes = [
-      { restaurantId: 7, user: 'john@test.com' },
-      { restaurantId: 8, user: 'acey@test.com' },
-      { restaurantId: 7, user: 'jacob@test.com' },
-      { restaurantId: 8, user: 'jacob@test.com' },
-      { restaurantId: 7, user: 'daniel@test.com' },
-    ];
+    this.voteModel = new Vote();
   }
 
   save(vote) {
-    this.votes.push(vote);
-    return vote;
+    return this.voteModel.save(vote);
   }
 
   getTeamVotesOnCurrentDay(teamId) {
-    if (teamId) {
-      return this.votes;
-    }
-    return [];
+    return this.voteModel.getVotes(teamId);
   }
 }
 
