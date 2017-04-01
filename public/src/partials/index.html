@@ -1,4 +1,8 @@
 <div class="container">
+    <div class="col-md-12">
+      <h3 ng-if="userAlreadyVoted">Your vote was: {{userVote.restaurantName}}</h3>
+      <h3 ng-if="!userAlreadyVoted && !isPollOpen">Sorry, the poll is closed</h3>
+    </div>
     <div class="col-md-4">
       <div class="panel panel-default">
           <div class="panel-heading">

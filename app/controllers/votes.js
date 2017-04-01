@@ -10,13 +10,11 @@ class VotesController {
   }
 
   save(vote) {
-    // TODO  save the vote and return the saved object
     this.votes.push(vote);
     return vote;
   }
 
   getTeamVotesOnCurrentDay(teamId) {
-    // TODO  filter the votes of the team for the current day
     if (teamId) {
       return this.votes;
     }

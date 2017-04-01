@@ -1,5 +1,5 @@
 
-const app = angular.module('lunchPoll', ['ui.router', 'ui.bootstrap', 'dialogs.main', 'angularValidator', 'angularMoment']);
+var app = angular.module('lunchPoll', ['ui.router', 'ui.bootstrap', 'dialogs.main', 'angularValidator', 'angularMoment']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
@@ -24,7 +24,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
          controllerAs: 'lunchstatuscontroller',
        });
 })
-.run(($rootScope, $location) => {
-    // TODO login
-  $rootScope.user = { email: 'john@test.com', name: 'John', team: 'Node' };
+.run(function($rootScope, $location) {
+  $rootScope.user = { email: 'matheus@test.com', name: 'Matheus', team: 'Node' };
 });

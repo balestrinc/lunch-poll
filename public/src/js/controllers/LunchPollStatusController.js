@@ -1,7 +1,7 @@
 angular
     .module('lunchPoll')
     .controller('LunchPollStatusController', function (Vote, $scope, $rootScope) {
-      const me = this;
+      var me = this;
       me.dayVotes = [];
       me.restaurantsVotes = [];
 
@@ -12,16 +12,22 @@ angular
         }
       });
 
+      $rootScope.$watch('dayVotes', function(newValue) {
+        if (newValue) {
+          setDayVotes(newValue);
+        }
+      });
 
       function setDayVotes(result) {
+        me.restaurantsVotes = [];
         me.dayVotes = result;
         me.totalVotes = me.dayVotes.length;
 
 
         angular.forEach($rootScope.eligibleRestaurants, function(value, key) {
-          restaurantVotes = _.where(me.dayVotes, { restaurantId: value.id });
-          rate = (restaurantVotes.length * 100) / me.totalVotes;
-          me.restaurantsVotes.push({ name: value.name, id: value.id, rate, votes: restaurantVotes.length });
+          var restaurantVotes = _.where(me.dayVotes, { restaurantId: value.id });
+          var rate = (restaurantVotes.length * 100) / me.totalVotes;
+          me.restaurantsVotes.push({ name: value.name, id: value.id, rate: rate, votes: restaurantVotes.length });
         });
       }
     });

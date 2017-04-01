@@ -16,8 +16,7 @@ class RestaurantsController {
     return this.restaurants;
   }
 
-  getNotEligibleRestaurants(teamId) {
-    // TODO filter the places where the team went for lunch in the week
+  getAlreadyVisitedRestaurants(teamId) {
     if (teamId) {
       const date = new Date();
       const weekDay = date.getDay();
