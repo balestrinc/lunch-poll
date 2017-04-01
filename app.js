@@ -31,9 +31,16 @@ app.route('/restaurants/team/:teamId')
 
 app.route('/votes')
   .post((req, res) => {
-    res.json(
-      votesController.save(req.body)
-    );
+    try {
+      const vote = votesController.save(req.body);
+      res.json(vote);
+    }
+    catch(e) {
+      res.statusMessage = e;
+      res.status(400)
+        .send('Invalid Vote').end();
+    }
+
   });
 
 app.route('/votes/team/:teamId/day')
